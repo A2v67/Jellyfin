@@ -6,17 +6,83 @@
 
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #101010;
+    font-family: Arial, sans-serif;
+}
+
+.loading {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.logo {
+    font-size: 52px;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+}
+
+.logo span {
+    color: #00a4dc;
+}
+
+.loader {
+    width: 55px;
+    height: 55px;
+    border: 5px solid rgba(255,255,255,0.15);
+    border-top: 5px solid #00a4dc;
+    border-radius: 50%;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.message {
+    margin-top: 25px;
+    color: #aaa;
+    font-size: 15px;
+}
+</style>
+
 <script>
 fetch("url.txt?t=" + Date.now())
 .then(r => r.text())
 .then(url => {
-    window.location.replace(url);
+    window.location.replace(url.trim());
 });
 </script>
 
 </head>
 
 <body>
-Redirection vers Jellyfin...
+
+<div class="loading">
+    <div class="logo">
+        Jelly<span>fin</span>
+    </div>
+
+    <div class="loader"></div>
+
+    <div class="message">
+        Chargement...
+    </div>
+</div>
+
 </body>
 </html>
