@@ -1,1 +1,1 @@
-https://cleanup-hopefully-symbol-deals.trycloudflare.com
+https://api.trycloudflare.com
