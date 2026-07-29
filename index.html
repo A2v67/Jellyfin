@@ -61,30 +61,10 @@ html, body {
 </style>
 
 <script>
-fetch("url.txt?t=" + Date.now(), { cache: "no-store" })
-.then(response => {
-    if (!response.ok) {
-        throw new Error("url.txt introuvable");
-    }
-    return response.text();
-})
+fetch("url.txt?t=" + Date.now())
+.then(r => r.text())
 .then(url => {
-    url = url.trim();
-
-    // Vérifie que l'URL est valide
-    if (!url || !/^https?:\/\//i.test(url)) {
-        throw new Error("URL invalide");
-    }
-
-    window.location.replace(url);
-})
-.catch(() => {
-    // Cache le loader
-    document.querySelector(".loader").style.display = "none";
-
-    // Affiche le message d'erreur
-    document.querySelector(".message").innerHTML =
-        "🔴 Serveur Jellyfin fermé pour le moment.<br>Réessayez plus tard.";
+    window.location.replace(url.trim());
 });
 </script>
 
